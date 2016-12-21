@@ -1,0 +1,28 @@
+{
+  "name":"wizmag/statist",
+  "type":"magento-module",
+  "homepage":"https://github.com/wizard3d3000/magentostatist",
+  "description":"Magento Module",
+  "minimum-stability": "dev",
+  "authors":[
+    {
+      "name":"Igor ",
+      "email":"porrygatter2003@gmail.com"
+    }
+  ],
+  "require":{
+    "magento-hackathon/magento-composer-installer":"*"
+  },
+  "extra": {
+    "map": [
+      ["app/code/local/WizMag/Statist", "app/code/local/WizMag/Statist"],
+      ["app/design/frontend/base/default/layout/wizmag_statist.xml", "app/design/frontend/base/default/layout/wizmag_statist.xml"],
+      ["app/design/frontend/base/default/template/wizmag_statist", "app/design/frontend/base/default/template/wizmag_statist"],
+      ["app/design/adminhtml/default/layout/wizmag_statist.xml", "app/design/adminhtml/default/layout/wizmag_statist.xml"],
+      ["app/design/adminhtml/default/template/wizmag_statist", "app/design/adminhtml/default/template/wizmag_statist"],
+      ["app/etc/modules/WizMag_Statist.xml", "app/etc/modules/WizMag_Statist.xml"]
+    ],
+    "auto-append-gitignore": true,
+    "magento-root-dir": "."
+  }
+}
