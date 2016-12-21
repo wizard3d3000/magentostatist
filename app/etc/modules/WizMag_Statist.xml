@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<config>
+    <modules>
+        <WizMag_Statist>
+            <active>true</active>
+            <codePool>local</codePool>
+        </WizMag_Statist>
+    </modules>
+</config>

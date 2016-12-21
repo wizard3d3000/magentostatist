@@ -1,0 +1,16 @@
+<layout>
+
+    <wizmagstatist_index_index>
+        <reference name="content">
+            <block type="wizmagstatist/statist" template="wizmag_statist/index.phtml" />
+        </reference>
+    </wizmagstatist_index_index>
+
+    <wizmagstatist_index_view>
+        <reference name="content">
+            <block type="wizmagstatist/view" name="statist.content" template="wizmag_statist/view.phtml" />
+        </reference>
+    </wizmagstatist_index_view>
+
+</layout>
+

@@ -1,0 +1,9 @@
+<layout>
+    <adminhtml_statist_index>
+        <reference name="content">
+            <block type="wizmagstatist/adminhtml_statist"  />
+        </reference>
+    </adminhtml_statist_index>
+</layout>
+
+ <!--template="wizmag_statist/index.phtml"-->

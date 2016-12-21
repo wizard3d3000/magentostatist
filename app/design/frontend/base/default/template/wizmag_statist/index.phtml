@@ -1,0 +1,18 @@
+<?php
+$news = $this->getStatistCollection();
+//$newsViewUrl = Mage::getUrl('statist/index/view');
+?>
+    <h1>Statist</h1>
+<?php foreach ($news as $item): ?>
+    <h2>
+        <!--
+         <a href="<?php //echo $newsViewUrl; ?>?id=<?php // echo $item->getId(); ?>">
+            <?php //echo $item->getProductname(); ?>
+        </a>
+        -->
+        <?php echo $item->getProductname(); ?>
+    </h2>
+<?php endforeach; ?>
+
+
+

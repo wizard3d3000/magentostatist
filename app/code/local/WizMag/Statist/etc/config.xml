@@ -1,0 +1,103 @@
+<config>
+    <modules>
+        <WizMag_Statist>
+            <version>0.0.1</version>
+        </WizMag_Statist>
+    </modules>
+
+    <frontend>
+        <layout>
+            <updates>
+                <wizmagstatist>
+                    <file>wizmag_statist.xml</file>
+                </wizmagstatist>
+            </updates>
+        </layout>
+        <routers>
+            <wizmagstatist>
+                <use>standard</use>
+                <args>
+                    <module>WizMag_Statist</module>
+                    <frontName>statistfront</frontName>
+                </args>
+            </wizmagstatist>
+        </routers>
+
+        <events>
+            <sales_order_place_after>
+                <observers>
+                    <wizmagstatist_observer>
+                        <class>wizmagstatist/observer</class>
+                        <method>sales_order_place_after</method>>
+                    </wizmagstatist_observer>
+                </observers>
+            </sales_order_place_after>
+        </events>
+
+    </frontend>
+
+    <global>
+
+        <blocks>
+            <wizmagstatist>
+                <class>WizMag_Statist_Block</class>
+            </wizmagstatist>
+        </blocks>
+        <helpers>
+            <wizmagstatist>
+                <class>WizMag_Statist_Helper</class>
+            </wizmagstatist>
+        </helpers>
+
+        <models>
+            <wizmagstatist>
+                <class>WizMag_Statist_Model</class>
+                <resourceModel>wizmagstatist_resource</resourceModel>
+            </wizmagstatist>
+            <wizmagstatist_resource>
+                <class>WizMag_Statist_Model_Resource</class>
+                <entities>
+                    <table_statist>
+                        <table>wizmagstatist_entities</table>
+                    </table_statist>
+                </entities>
+            </wizmagstatist_resource>
+        </models>
+
+        <resources>
+            <wizmagstatist_setup>
+                <setup>
+                    <module>WizMag_Statist</module>
+                </setup>
+            </wizmagstatist_setup>
+        </resources>
+        <x></x>
+
+    </global>
+
+    <adminhtml>
+
+        <layout>
+            <updates>
+                <wizmagstatist>
+                    <file>wizmag_statist.xml</file>
+                </wizmagstatist>
+            </updates>
+        </layout>
+
+    </adminhtml>
+
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <wizmag_statist before="Mage_Adminhtml">WizMag_Statist_Adminhtml</wizmag_statist>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+
+
+</config>

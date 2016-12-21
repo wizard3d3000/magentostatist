@@ -1,0 +1,21 @@
+
+<adminhtml>
+
+    <menu>
+        <sales translate="title" module="sales">
+            <title>Sales</title>
+            <sort_order>20</sort_order>
+            <depends><module>Mage_Sales</module></depends>
+            <children>
+                <statistic translate="title" module="sales">
+                    <title>Product Statistic</title>
+                    <action>adminhtml/statist/index</action>
+                    <sort_order>10</sort_order>
+                </statistic>
+            </children>
+        </sales>
+    </menu>
+
+</adminhtml>
+
+
