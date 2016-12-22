@@ -8,6 +8,17 @@ class WizMag_Statist_Block_Adminhtml_Statist_Grid extends Mage_Adminhtml_Block_W
     {
         $collection = Mage::getModel('wizmagstatist/statist')->getCollection();
         #TODO: join product Vendor SKU
+
+
+        /**
+         * it's part of attribute columns to joing in the module's grid
+         */
+//        $collection->getSelect()->joinLeft(array('value' => 'eav_attribute_option_value'),
+//            'value = productname',
+//            array(), null, 'left'
+//        );
+//
+
         $this->setCollection($collection);
         return parent::_prepareCollection();
     }
@@ -23,43 +34,43 @@ class WizMag_Statist_Block_Adminhtml_Statist_Grid extends Mage_Adminhtml_Block_W
         ));
 
         $this->addColumn('sku', array(
-            'header' => $helper->__('sku'),
+            'header' => $helper->__('SKU'),
             'index' => 'sku',
             'type' => 'text',
         ));
 
-        $this->addColumn('vendorsku', array(
-            'header' => $helper->__('vendoesku'),
-            'index' => 'vendorsku',
-            'type' => 'text',
-        ));
+//        $this->addColumn('vendorsku', array(
+//            'header' => $helper->__('VendorSKU'),
+//            'index' => 'productname',
+//            'type' => 'text',
+//        ));
 
         $this->addColumn('productname', array(
-            'header' => $helper->__('productname'),
+            'header' => $helper->__('Product Name'),
             'index' => 'productname',
             'type' => 'text',
         ));
 
         $this->addColumn('quantity', array(
-            'header' => $helper->__('quantity'),
+            'header' => $helper->__('Quantity'),
             'index' => 'quantity',
             'type' => 'text',
         ));
 
         $this->addColumn('totalamount', array(
-            'header' => $helper->__('totalamount'),
+            'header' => $helper->__('Total Amount'),
             'index' => 'totalamount',
             'type' => 'text',
         ));
 
         $this->addColumn('product_id', array(
-            'header' => $helper->__('product_id'),
+            'header' => $helper->__('Product ID'),
             'index' => 'product_id',
             'type' => 'text',
         ));
 
         $this->addColumn('lastsold', array(
-            'header' => $helper->__('lastsold'),
+            'header' => $helper->__('Last sold'),
             'index' => 'lastsold',
             'type' => 'date',
         ));

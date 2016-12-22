@@ -95,22 +95,39 @@ class WizMag_Statist_IndexController extends  Mage_Core_Controller_Front_Action{
 
         // get all attributes of a product
 
-
+        /**
+         * it's worked version, this can get a value of vendorSKU about productid
+         */
 
         $productId = 450;
         $product = Mage::getModel('catalog/product')->load($productId);
-        $attributes = $product->getAttributes();
-
+        //$attributes = $product->getAttributes();
         echo $product->getAttributeText('vendorsku');
-        die();
 
-        foreach ($attributes as $attribute) {
-            $attributeCode = $attribute->getAttributeCode();
-            //echo $attributeCode.'<br>';
-            $label = $attribute->getStoreLabel($product);
-            $value = $attribute->getFrontend()->getValue($product);
-            echo $attributeCode.' = '.$value.'<br>';
-        }
+
+            //$collection = Mage::getModel('tasknews/news')->getCollection();
+            //$newsAuthorsTable = Mage::getSingleton('core/resource')->getTableName('catalog/product');
+            //$collection->getSelect()->join(array('authors'=> $newsAuthorsTable),'main_table.news_id=authors.news_id',array('author'));
+            //$this->setCollection($collection);
+
+
+
+
+//        $collection = Mage::getModel('wizmagstatist/statist')->getCollection();
+//        //$productTable = Mage::getSingleton('core/resource')->getTableName('catalog/product');
+//        $collection->getSelect()->join(array('value'=> 'eav_attribute_option_value'),'wizmagstatist_entities',array('vendorsku'));
+//
+//        $canape = Mage::getModel ("eav/entity_attribute_option")
+//            -> getCollection()
+//            -> join(
+//                'eav/attribute_option_value',
+//                'eav_attribute_option.option_id = eav_attribute_option_value.option_id', array('value'))
+//            -> addFieldToFilter('attribute_id', '210')
+//        ;
+//
+//        //var_dump($canape);
+//        die($canape);
+
 
 
         /**
