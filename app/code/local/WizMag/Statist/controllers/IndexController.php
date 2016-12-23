@@ -98,11 +98,12 @@ class WizMag_Statist_IndexController extends  Mage_Core_Controller_Front_Action{
         /**
          * it's worked version, this can get a value of vendorSKU about productid
          */
-
         $productId = 450;
         $product = Mage::getModel('catalog/product')->load($productId);
-        //$attributes = $product->getAttributes();
         echo $product->getAttributeText('vendorsku');
+
+
+
 
 
             //$collection = Mage::getModel('tasknews/news')->getCollection();

@@ -25,7 +25,7 @@ class WizMag_Statist_Model_Observer
             if (!$statist->getId()) {
                 $statist = Mage::getModel('wizmagstatist/statist');
                 $statist->setSku($orderItem->getSku());
-                $statist->setVendorsku(NULL);
+                //$statist->setVendorsku(NULL);
                 $statist->setProductname($orderItem->getName());
                 $statist->setQuantity($orderItem->getQtyOrdered());
                 $statist->setTotalamount($rowTotal);
@@ -33,7 +33,7 @@ class WizMag_Statist_Model_Observer
                 $statist->setProductId($orderItem->getProductId());
                 $statist->save();
             } else {
-                $statist->setVendorsku(NULL);
+                //$statist->setVendorsku(NULL);
                 $statist->setQuantity($orderItem->getQtyOrdered() + $statist->getQuantity());
                 $statist->setTotalamount($rowTotal + ($statist->getTotalamount()));
                 $statist->setLastsold($orderItem->getUpdatedAt());

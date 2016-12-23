@@ -9,17 +9,23 @@ class WizMag_Statist_Block_Adminhtml_Statist_Grid extends Mage_Adminhtml_Block_W
         $collection = Mage::getModel('wizmagstatist/statist')->getCollection();
         #TODO: join product Vendor SKU
 
-
         /**
          * it's part of attribute columns to joing in the module's grid
          */
+
 //        $collection->getSelect()->joinLeft(array('value' => 'eav_attribute_option_value'),
-//            'value = productname',
+//            'productname = value',
 //            array(), null, 'left'
 //        );
-//
 
-        $this->setCollection($collection);
+        $collection->getSelect()->joinLeft('eav_attribute_option_value',
+            'productname = eav_attribute_option_value.value',
+            array('value'), null, 'left'
+        );
+
+
+
+            $this->setCollection($collection);
         return parent::_prepareCollection();
     }
 
@@ -39,11 +45,22 @@ class WizMag_Statist_Block_Adminhtml_Statist_Grid extends Mage_Adminhtml_Block_W
             'type' => 'text',
         ));
 
+
+
 //        $this->addColumn('vendorsku', array(
 //            'header' => $helper->__('VendorSKU'),
 //            'index' => 'productname',
 //            'type' => 'text',
 //        ));
+
+
+        $this->addColumn('vendorsku', array(
+            'header' => $helper->__('VendorSKU'),
+            'index' => 'value',
+            'type' => 'text',
+        ));
+
+
 
         $this->addColumn('productname', array(
             'header' => $helper->__('Product Name'),
@@ -99,6 +116,5 @@ class WizMag_Statist_Block_Adminhtml_Statist_Grid extends Mage_Adminhtml_Block_W
             'id' => $model->getId(),
         ));
     }
-
 
 }
