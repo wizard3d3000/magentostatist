@@ -13,17 +13,24 @@ class WizMag_Statist_Block_Adminhtml_Statist_Grid extends Mage_Adminhtml_Block_W
          * it's part of attribute columns to joing in the module's grid
          */
 
-//        $collection->getSelect()->joinLeft(array('value' => 'eav_attribute_option_value'),
-//            'productname = value',
-//            array(), null, 'left'
-//        );
+          $collection->getSelect()
+              ->joinLeft(array('cat' => 'catalog_product_entity_int'),
+                  'cat.entity_id = product_id AND cat.attribute_id = 210',
+                  array('cat.value')
+              )
+              ->joinLeft(array('at' => 'eav_attribute_option_value'),
+                  'cat.value = at.option_id',
+                  array('at.value'));
 
-        $collection->getSelect()->joinLeft('eav_attribute_option_value',
-            'productname = eav_attribute_option_value.value',
-            array('value'), null, 'left'
-        );
+//        foreach ($collection as $i){
+//            var_dump($i);
+//            echo '<br>';echo '<br>';echo '<br>';
+//        }
 
-
+        /**
+         * it's get sql from Magento to raw SQL
+         */
+        //Mage::log($collection->getSelect()->assemble(), null, "debug_SQL.log");
 
             $this->setCollection($collection);
         return parent::_prepareCollection();
