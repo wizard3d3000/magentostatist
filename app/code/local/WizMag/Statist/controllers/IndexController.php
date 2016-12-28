@@ -101,7 +101,7 @@ class WizMag_Statist_IndexController extends  Mage_Core_Controller_Front_Action{
         $productId = 450;
         $product = Mage::getModel('catalog/product')->load($productId);
         echo $product->getAttributeText('vendorsku');
-        echo 'sdfsdfsdfsdfsdf';
+        echo 'lalala';
 
 
 

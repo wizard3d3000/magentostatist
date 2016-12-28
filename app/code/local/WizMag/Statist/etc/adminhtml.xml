@@ -1,5 +1,26 @@
-
-<adminhtml>
+<?xml version="1.0"?>
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <api></api>
+                            <config>
+                                <children>
+                                    <wizmagstatist translate="title">
+                                        <title>Statist</title>
+                                        <sort_order>20</sort_order>
+                                    </wizmagstatist>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
 
     <menu>
         <sales translate="title" module="sales">
@@ -16,6 +37,7 @@
         </sales>
     </menu>
 
-</adminhtml>
+</config>
+
 
 

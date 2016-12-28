@@ -71,7 +71,7 @@
                 </setup>
             </wizmagstatist_setup>
         </resources>
-        <x></x>
+
 
     </global>
 
@@ -85,25 +85,6 @@
             </updates>
         </layout>
 
-        <acl>
-            <resources>
-                <admin>
-                    <children>
-                        <system>
-                            <children>
-                                <config>
-                                    <children>
-                                        <my_section>
-                                            <title>My Section</title>
-                                        </my_section>
-                                    </children>
-                                </config>
-                            </children>
-                        </system>
-                    </children>
-                </admin>
-            </resources>
-        </acl>
 
     </adminhtml>
 
@@ -118,6 +99,5 @@
             </adminhtml>
         </routers>
     </admin>
-
 
 </config>
