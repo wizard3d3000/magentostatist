@@ -27,22 +27,22 @@ $table = $installer->getConnection()
     ->addColumn('sku', Varien_Db_Ddl_Table::TYPE_TEXT, '255', array(
         'nullable'  => false,
     ))
-    ->addColumn('vendorsku', Varien_Db_Ddl_Table::TYPE_TEXT, null, array(
-        'nullable'  => false,
-    ))
     ->addColumn('productname', Varien_Db_Ddl_Table::TYPE_TEXT, null, array(
         'nullable'  => false,
     ))
     ->addColumn('quantity', Varien_Db_Ddl_Table::TYPE_INTEGER, null, array(
         'nullable'  => false,
     ))
-    ->addColumn('product_id', Varien_Db_Ddl_Table::TYPE_INTEGER, null, array(
-        'nullable'  => false,
-    ))
     ->addColumn('totalamount', Varien_Db_Ddl_Table::TYPE_INTEGER, null, array(
         'nullable'  => false,
     ))
     ->addColumn('lastsold', Varien_Db_Ddl_Table::TYPE_DATETIME, null, array(
+        'nullable'  => false,
+    ))
+    ->addColumn('product_id', Varien_Db_Ddl_Table::TYPE_INTEGER, null, array(
+        'nullable'  => false,
+    ))
+    ->addColumn('attributeid', Varien_Db_Ddl_Table::TYPE_INTEGER, null, array(
         'nullable'  => false,
     ));
 
