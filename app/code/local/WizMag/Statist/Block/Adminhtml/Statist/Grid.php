@@ -3,36 +3,29 @@
 class WizMag_Statist_Block_Adminhtml_Statist_Grid extends Mage_Adminhtml_Block_Widget_Grid
 {
 
-
     protected function _prepareCollection()
     {
         $collection = Mage::getModel('wizmagstatist/statist')->getCollection();
-        #TODO: join product Vendor SKU
+
+        /**
+         * it's get Attribute code from system/configuretion field from adminpanel
+         */
+        $userAttributeCode = Mage::getStoreConfig('wizmagstatist/statist_groupe/code_att');
+        $attributeId = Mage::getModel('eav/entity_attribute')->getIdByCode('catalog_product', $userAttributeCode);
 
         /**
          * it's part of attribute columns to joing in the module's grid
          */
+        $collection->getSelect()
+            ->joinLeft(array('cat' => 'catalog_product_entity_int'),
+                "cat.entity_id = product_id AND cat.attribute_id = {$attributeId}",
+                array('cat.value')
+            )
+            ->joinLeft(array('at' => 'eav_attribute_option_value'),
+                'cat.value = at.option_id',
+                array('at.value'));
 
-          $collection->getSelect()
-              ->joinLeft(array('cat' => 'catalog_product_entity_int'),
-                  'cat.entity_id = product_id AND cat.attribute_id = 210',
-                  array('cat.value')
-              )
-              ->joinLeft(array('at' => 'eav_attribute_option_value'),
-                  'cat.value = at.option_id',
-                  array('at.value'));
-
-//        foreach ($collection as $i){
-//            var_dump($i);
-//            echo '<br>';echo '<br>';echo '<br>';
-//        }
-
-        /**
-         * it's get sql from Magento to raw SQL
-         */
-        //Mage::log($collection->getSelect()->assemble(), null, "debug_SQL.log");
-
-            $this->setCollection($collection);
+        $this->setCollection($collection);
         return parent::_prepareCollection();
     }
 
@@ -53,20 +46,11 @@ class WizMag_Statist_Block_Adminhtml_Statist_Grid extends Mage_Adminhtml_Block_W
         ));
 
 
-
-//        $this->addColumn('vendorsku', array(
-//            'header' => $helper->__('VendorSKU'),
-//            'index' => 'productname',
-//            'type' => 'text',
-//        ));
-
-
         $this->addColumn('vendorsku', array(
             'header' => $helper->__('VendorSKU'),
             'index' => 'value',
             'type' => 'text',
         ));
-
 
 
         $this->addColumn('productname', array(

@@ -98,20 +98,19 @@ class WizMag_Statist_IndexController extends  Mage_Core_Controller_Front_Action{
         /**
          * it's worked version, this can get a value of vendorSKU about productid
          */
+
         $productId = 450;
         $product = Mage::getModel('catalog/product')->load($productId);
-        echo $product->getAttributeText('vendorsku');
-        echo 'lalala';
+        echo $product->getAttributeText('vendorsku').'<br>';
 
 
+        $attributecode = Mage::getStoreConfig('wizmagstatist/statist_groupe/code_att');
 
 
             //$collection = Mage::getModel('tasknews/news')->getCollection();
             //$newsAuthorsTable = Mage::getSingleton('core/resource')->getTableName('catalog/product');
             //$collection->getSelect()->join(array('authors'=> $newsAuthorsTable),'main_table.news_id=authors.news_id',array('author'));
             //$this->setCollection($collection);
-
-
 
 
 //        $collection = Mage::getModel('wizmagstatist/statist')->getCollection();
@@ -128,7 +127,6 @@ class WizMag_Statist_IndexController extends  Mage_Core_Controller_Front_Action{
 //
 //        //var_dump($canape);
 //        die($canape);
-
 
 
         /**
