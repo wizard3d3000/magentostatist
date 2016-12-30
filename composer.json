@@ -17,7 +17,7 @@
     "map": [
       ["app/code/local/WizMag/Statist", "app/code/local/WizMag/Statist"],
       ["app/design/frontend/base/default/layout/wizmag_statist.xml", "app/design/frontend/base/default/layout/wizmag_statist.xml"],
-      ["app/design/ frontend/base/default/template/wizmag_statist", "app/design/frontend/base/default/template/wizmag_statist"],
+      ["app/design/frontend/base/default/template/wizmag_statist", "app/design/frontend/base/default/template/wizmag_statist"],
       ["app/design/adminhtml/default/default/layout/wizmag_statist.xml", "app/design/adminhtml/default/default/layout/wizmag_statist.xml"],
       ["app/design/adminhtml/default/default/template/wizmag_statist", "app/design/adminhtml/default/default/template/wizmag_statist"],
       ["app/etc/modules/WizMag_Statist.xml", "app/etc/modules/WizMag_Statist.xml"],
