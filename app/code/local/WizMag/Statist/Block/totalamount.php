@@ -1,8 +1,15 @@
 <?php
-class WizMag_Statist_Block_totalamount extends Mage_Core_Block_Template
+
+/**
+ * Class WizMag_Statist_Block_Totalamount
+ */
+class WizMag_Statist_Block_Totalamount extends Mage_Core_Block_Template
 {
-    public function getTotalAmount(){
-        $a = '555';
-        return $a;
+    public function getTotalAmount()
+    {
+        $collection = Mage::getModel('wizmagstatist/statist')->getCollection();
+        //return $a;
     }
+
+
 }

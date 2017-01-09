@@ -4,6 +4,12 @@
             <block type="wizmagstatist/adminhtml_statist"  />
         </reference>
     </adminhtml_statist_index>
+
+    <adminhtml_statist_edit>
+        <reference name="content">
+            <block type="wizmagstatist/adminhtml_statist_edit"  />
+        </reference>
+    </adminhtml_statist_edit>
 </layout>
 
  <!--template="wizmag_statist/index.phtml"-->

@@ -13,33 +13,15 @@
     </wizmagstatist_index_view>
 
     <catalog_product_view translate="label">
-        <reference name="content">
-            <reference name="product.info">
-                <block type="wizmagstatist/totalamount" name="statist.name" as="info" template="wizmag_statist/totalamount.phtml" output="toHtml" before="-"/>
-            </reference>
+        <reference name="head">
+            <action method="addItem"><type>skin_css</type><name>css/statist/statist.css</name></action>
         </reference>
+            <reference name="alert.urls">
+                <!--<block type="wizmagstatist/totalamount" name="statist.name" as="info" template="wizmag_statist/totalamount.phtml" output="toHtml" before="-"/>-->
+                <block type="catalog/product_view" name="product.info.sold" as="product.info.sold" template="wizmag_statist/totalamount.phtml" />
+            </reference>
     </catalog_product_view>
 
-    <!--<catalog_product_view translate="label">-->
-        <!--<reference name="content">-->
-            <!--<reference name="product.info">-->
-                <!--<block type="myblock/myblock" name="somename" as="media"-->
-                       <!--template="abc.phtml" output="toHtml" before="-" />-->
-            <!--</reference>-->
-        <!--</reference>-->
-    <!--</catalog_product_view>-->
-
-    <!--<PRODUCT_TYPE_simple translate="label" module="catalog">-->
-        <!--<label>Catalog Product View (Simple)</label>-->
-        <!--<reference name="product.info">-->
-            <!--<block type="catalog/product_view_type_simple" name="product.info.simple" as="product_type_data" template="catalog/product/view/type/default.phtml">-->
-                <!--<block type="core/text_list" name="product.info.simple.extra" as="product_type_data_extra" translate="label">-->
-                    <!--<label>Product Extra Info</label>-->
-                <!--</block>-->
-            <!--</block>-->
-            <!--<block type="catalog/product_view_type_simple" name="product.info.availability" as="product_type_availability" template="catalog/product/view/type/availability/default.phtml" />-->
-        <!--</reference>-->
-    <!--</PRODUCT_TYPE_simple>-->
 
 
 </layout>

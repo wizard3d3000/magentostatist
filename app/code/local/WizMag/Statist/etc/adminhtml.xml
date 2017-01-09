@@ -1,15 +1,29 @@
 <?xml version="1.0"?>
 <config>
+    <menu>
+        <sales translate="title" module="sales">
+            <title>Sales</title>
+            <sort_order>20</sort_order>
+            <depends><module>Mage_Sales</module></depends>
+            <children>
+                <statistic translate="title" module="wizmagstatist">
+                    <title>Product Statistic</title>
+                    <action>adminhtml/statist/index</action>
+                    <sort_order>10</sort_order>
+                </statistic>
+            </children>
+        </sales>
+    </menu>
+
     <acl>
         <resources>
             <admin>
                 <children>
                     <system>
                         <children>
-                            <api></api>
                             <config>
                                 <children>
-                                    <wizmagstatist translate="title">
+                                    <wizmagstatist translate="title" module="wizmagstatist">
                                         <title>Statist</title>
                                         <sort_order>20</sort_order>
                                     </wizmagstatist>
@@ -21,21 +35,6 @@
             </admin>
         </resources>
     </acl>
-
-    <menu>
-        <sales translate="title" module="sales">
-            <title>Sales</title>
-            <sort_order>20</sort_order>
-            <depends><module>Mage_Sales</module></depends>
-            <children>
-                <statistic translate="title" module="sales">
-                    <title>Product Statistic</title>
-                    <action>adminhtml/statist/index</action>
-                    <sort_order>10</sort_order>
-                </statistic>
-            </children>
-        </sales>
-    </menu>
 
 </config>
 

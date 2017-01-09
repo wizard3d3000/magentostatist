@@ -10,6 +10,18 @@ class WizMag_Statist_Block_Adminhtml_Statist_Edit extends Mage_Adminhtml_Block_W
     {
         $this->_blockGroup = 'wizmagstatist';
         $this->_controller = 'adminhtml_statist';
+
+        $this->_addButton('save_and_continue', array(
+            'label'     => Mage::helper('wizmagstatist')->__('Save and Continue Edit'),
+            'onclick'   => 'saveAndContinueEdit()',
+            'class' => 'save'
+        ), 10);
+
+        $this->_formScripts[] = "function saveAndContinueEdit()
+        {
+         editForm.submit($('edit_form').action + 'back/edit/') 
+        } 
+        ";
     }
 
     public function getHeaderText()
@@ -22,6 +34,6 @@ class WizMag_Statist_Block_Adminhtml_Statist_Edit extends Mage_Adminhtml_Block_W
         } else {
             return $helper->__("Add News item");
         }
-    }
 
+    }
 }

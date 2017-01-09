@@ -3,31 +3,38 @@
 class WizMag_Statist_Block_Adminhtml_Statist_Grid extends Mage_Adminhtml_Block_Widget_Grid
 {
 
+    public $attributeId;
+
     protected function _prepareCollection()
     {
+
         $collection = Mage::getModel('wizmagstatist/statist')->getCollection();
 
         /**
          * it's get Attribute code from system/configuretion field from adminpanel
          */
         $userAttributeCode = Mage::getStoreConfig('wizmagstatist/statist_groupe/code_att');
-        $attributeId = Mage::getModel('eav/entity_attribute')->getIdByCode('catalog_product', $userAttributeCode);
+        $this->attributeId = Mage::getModel('eav/entity_attribute')->getIdByCode('catalog_product', $userAttributeCode);
 
         /**
          * it's part of attribute columns to joing in the module's grid
          */
-        $collection->getSelect()
-            ->joinLeft(array('cat' => 'catalog_product_entity_int'),
-                "cat.entity_id = product_id AND cat.attribute_id = {$attributeId}",
-                array('cat.value')
-            )
-            ->joinLeft(array('at' => 'eav_attribute_option_value'),
-                'cat.value = at.option_id',
-                array('at.value'));
+
+        if ($this->attributeId) {
+            $collection->getSelect()
+                ->joinLeft(array('cat' => 'catalog_product_entity_int'),
+                    "cat.entity_id = product_id AND cat.attribute_id = {$this->attributeId}",
+                    array('cat.value')
+                )
+                ->joinLeft(array('at' => 'eav_attribute_option_value'),
+                    'cat.value = at.option_id',
+                    array('at.value'));
+        }
 
         $this->setCollection($collection);
         return parent::_prepareCollection();
     }
+
 
     protected function _prepareColumns()
     {
@@ -45,13 +52,11 @@ class WizMag_Statist_Block_Adminhtml_Statist_Grid extends Mage_Adminhtml_Block_W
             'type' => 'text',
         ));
 
-
         $this->addColumn('vendorsku', array(
-            'header' => $helper->__('VendorSKU'),
-            'index' => 'value',
-            'type' => 'text',
-        ));
-
+                'header' => $helper->__('VendorSKU'),
+                'index' => 'value',
+                'type' => 'text',
+            ));
 
         $this->addColumn('productname', array(
             'header' => $helper->__('Product Name'),
@@ -88,6 +93,10 @@ class WizMag_Statist_Block_Adminhtml_Statist_Grid extends Mage_Adminhtml_Block_W
     }
 
     //просто метод для массовых операций над гридом
+    /**
+     * 
+     * @return $this
+     */
     protected function _prepareMassaction()
     {
         $this->setMassactionIdField('id');

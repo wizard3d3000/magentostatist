@@ -2,19 +2,22 @@
 
 class WizMag_Statist_Adminhtml_StatistController extends Mage_Adminhtml_Controller_Action
 {
-    public function indexAction()
+    /**
+     * Init Action
+     */
+    public function _initAction()
     {
-        //die('admin action controller');
-
         $this->loadLayout();
-
         $this->_setActiveMenu('Product Statistic');
 
-//        $contentBlock = $this->getLayout()->createBlock('wizmagstatist/adminhtml_statist');
-//        $this->_addContent($contentBlock);
-
         $this->renderLayout();
-        
+    }
+
+
+    public function indexAction()
+    {
+        $this->_initAction();
+
     }
     
     /* ******  Блоки для CRUD операций ****** */
@@ -29,9 +32,7 @@ class WizMag_Statist_Adminhtml_StatistController extends Mage_Adminhtml_Controll
         $id = (int) $this->getRequest()->getParam('id');
         Mage::register('current_news', Mage::getModel('wizmagstatist/statist')->load($id)); // глобальная переменная current_news (созданая в реестре), мы ей передаем нашу модель
 
-        $this->loadLayout()->_setActiveMenu('Product Statistic');
-        $this->_addContent($this->getLayout()->createBlock('wizmagstatist/adminhtml_statist_edit'));
-        $this->renderLayout();
+        $this->_initAction();
     }
 
     public function saveAction()
@@ -44,19 +45,23 @@ class WizMag_Statist_Adminhtml_StatistController extends Mage_Adminhtml_Controll
 
                 $model->save();
 
-                Mage::getSingleton('adminhtml/session')->addSuccess($this->__('News was saved successfully'));
-                Mage::getSingleton('adminhtml/session')->setFormData(false);
+                $this->_getSession()->addSuccess($this->__('News was saved successfully'));
+                $this->_getSession()->setFormData(false);
+                if ($this->getRequest()->getParam('back')) {
+                    return $this->_redirect('*/*/edit', array('id' => $id));
+                }
                 $this->_redirect('*/*/');
             } catch (Exception $e) {
-                Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
-                Mage::getSingleton('adminhtml/session')->setFormData($data);
+                $this->_getSession()->addError($e->getMessage());
+                $this->_getSession()->setFormData($data);
                 $this->_redirect('*/*/edit', array(
                     'id' => $id
                 ));
             }
             return;
         }
-        Mage::getSingleton('adminhtml/session')->addError($this->__('Unable to find item to save'));
+
+        $this->_getSession()->addError($this->__('Unable to find item to save'));
         $this->_redirect('*/*/');
     }
 
@@ -68,9 +73,9 @@ class WizMag_Statist_Adminhtml_StatistController extends Mage_Adminhtml_Controll
         if ($id = $this->getRequest()->getParam('id')) {
             try {
                 Mage::getModel('wizmagstatist/statist')->setId($id)->delete();
-                Mage::getSingleton('adminhtml/session')->addSuccess($this->__('News was deleted successfully'));
+                $this->_getSession()->addSuccess($this->__('News was deleted successfully'));
             } catch (Exception $e) {
-                Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
+                $this->_getSession()->addError($e->getMessage());
                 $this->_redirect('*/*/edit', array('id' => $id));
             }
         }
@@ -83,9 +88,9 @@ class WizMag_Statist_Adminhtml_StatistController extends Mage_Adminhtml_Controll
     // метод для масовых операций над гридом массовых удалений
     public function massDeleteAction()
     {
-        $news = $this->getRequest()->getParam('news', null); // news - переменная в которую мы указывали в блоке с массивом id полей нашей таблицы
+        $news = (array)$this->getRequest()->getParam('news'); // news - переменная в которую мы указывали в блоке с массивом id полей нашей таблицы
 
-        if (is_array($news) && $news) {
+        if ($news) {
             try {
                 foreach ($news as $id) {
                     Mage::getModel('wizmagstatist/statist')->setId($id)->delete();

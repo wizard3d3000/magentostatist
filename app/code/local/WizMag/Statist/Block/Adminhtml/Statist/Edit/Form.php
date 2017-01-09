@@ -10,9 +10,7 @@ class WizMag_Statist_Block_Adminhtml_Statist_Edit_Form extends Mage_Adminhtml_Bl
 
         $form = new Varien_Data_Form(array(
             'id' => 'edit_form',
-            'action' => $this->getUrl('*/*/save', array(
-                'id' => $this->getRequest()->getParam('id')
-            )),
+            'action' => $this->getUrl('*/*/save', array('id' => $this->getRequest()->getParam('id'))),
             'method' => 'post',
             'enctype' => 'multipart/form-data'
         ));
@@ -29,7 +27,7 @@ class WizMag_Statist_Block_Adminhtml_Statist_Edit_Form extends Mage_Adminhtml_Bl
 
         $fieldset->addField('vendorsku', 'text', array(
             'label' => $helper->__('vendorsku'),
-            'required' => true,
+//            'required' => true,
             'name' => 'vendorsku',
         ));
 

@@ -99,12 +99,16 @@ class WizMag_Statist_IndexController extends  Mage_Core_Controller_Front_Action{
          * it's worked version, this can get a value of vendorSKU about productid
          */
 
-        $productId = 450;
-        $product = Mage::getModel('catalog/product')->load($productId);
-        echo $product->getAttributeText('vendorsku').'<br>';
+//        $productId = 450;
+//        $product = Mage::getModel('catalog/product')->load($productId);
+//        echo $product->getAttributeText('vendorsku').'<br>';
+
+        echo 'hello it is controller!!!'.'<br>';
 
 
-        $attributecode = Mage::getStoreConfig('wizmagstatist/statist_groupe/code_att');
+
+
+        //$attributecode = Mage::getStoreConfig('wizmagstatist/statist_groupe/code_att');
 
 
             //$collection = Mage::getModel('tasknews/news')->getCollection();
