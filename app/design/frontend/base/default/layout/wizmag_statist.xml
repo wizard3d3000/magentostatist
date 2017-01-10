@@ -1,33 +1,19 @@
 <layout>
 
     <wizmagstatist_index_index>
-        <reference name="content">
-            <block type="wizmagstatist/statist" template="wizmag_statist/index.phtml" />
-        </reference>
+        <!--<reference name="content">-->
+            <block type="wizmagstatist/statist" name="root" template="wizmag_statist/totalamount.phtml" />
+        <!--</reference>-->
     </wizmagstatist_index_index>
 
-    <wizmagstatist_index_view>
-        <reference name="content">
-            <block type="wizmagstatist/view" name="statist.content" template="wizmag_statist/view.phtml" />
-        </reference>
-    </wizmagstatist_index_view>
 
-
-
-
-
-    <!--<catalog_product_view translate="label">-->
-        <!--<reference name="head">-->
-            <!--<action method="addItem"><type>skin_css</type><name>css/statist/statist.css</name></action>-->
+    <!--<wizmagstatist_index_view>-->
+        <!--<reference name="content">-->
+            <!--<block type="wizmagstatist/view" name="statist.content" template="wizmag_statist/view.phtml" />-->
         <!--</reference>-->
-            <!--<reference name="alert.urls">-->
-                <!--&lt;!&ndash;<block type="wizmagstatist/totalamount" name="statist.name" as="info" template="wizmag_statist/totalamount.phtml" output="toHtml" before="-"/>&ndash;&gt;-->
-                <!--<block type="catalog/product_view" name="product.info.sold" as="product.info.sold" template="wizmag_statist/totalamount.phtml" />-->
-            <!--</reference>-->
-    <!--</catalog_product_view>-->
+    <!--</wizmagstatist_index_view>-->
 
-
-    <PRODUCT_TYPE_configurable translate="label" module="catalog">
+    <catalog_product_view translate="label">
         <reference name="head">
             <action method="addItem"><type>skin_css</type><name>css/statist/statist.css</name></action>
         </reference>
@@ -35,7 +21,7 @@
             <!--<block type="wizmagstatist/totalamount" name="statist.name" as="info" template="wizmag_statist/totalamount.phtml" output="toHtml" before="-"/>-->
             <block type="catalog/product_view" name="product.info.sold" as="product.info.sold" template="wizmag_statist/totalamount.phtml" />
         </reference>
-    </PRODUCT_TYPE_configurable>
+    </catalog_product_view>
 
 
 </layout>

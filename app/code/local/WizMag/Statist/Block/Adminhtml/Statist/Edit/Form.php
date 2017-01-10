@@ -51,6 +51,11 @@ class WizMag_Statist_Block_Adminhtml_Statist_Edit_Form extends Mage_Adminhtml_Bl
             'name' => 'totalamount',
         ));
 
+        $fieldset->addField('product_id', 'text', array(
+            'label' => $helper->__('product_id'),
+            'required' => true,
+            'name' => 'product_id',
+        ));
 
         $fieldset->addField('lastsold', 'date', array(
             'format' => Mage::app()->getLocale()->getDateFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT),

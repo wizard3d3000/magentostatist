@@ -1,0 +1,8 @@
+<layout>
+    <adminhtml_amount_index>
+        <reference name="content">
+            <block type="wizmagamount/adminhtml_amount" template="wizmag_amount/index.phtml"/>
+            <!--<block type="wizmagamount/adminhtml_amount"/>-->
+        </reference>
+    </adminhtml_amount_index>
+</layout>

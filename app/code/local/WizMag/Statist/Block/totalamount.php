@@ -7,8 +7,7 @@ class WizMag_Statist_Block_Totalamount extends Mage_Core_Block_Template
 {
     public function getTotalAmount()
     {
-        $collection = Mage::getModel('wizmagstatist/statist')->getCollection();
-        //return $a;
+        return 'a';
     }
 
 
