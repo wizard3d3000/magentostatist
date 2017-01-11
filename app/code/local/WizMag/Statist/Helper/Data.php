@@ -11,7 +11,7 @@ class WizMag_Statist_Helper_Data extends Mage_Core_Helper_Abstract
 
         if($quantity === false) {
             //Mage::log('go to cache', null, "debug_.log");
-            
+
             $quantity = 0;
             $collection = Mage::getModel('wizmagstatist/statist')->getCollection();
             $product = Mage::getModel('catalog/product')->load($productId);
@@ -39,3 +39,4 @@ class WizMag_Statist_Helper_Data extends Mage_Core_Helper_Abstract
         return $quantity;
     }
 }
+                
