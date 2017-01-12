@@ -1,15 +1,16 @@
-$(document).ready(function(){
-    $('#show_quantity').click(function(){
-        $.ajax({
-            url: '',
-            data: '0',
-            cache: false,
-            success: function(html){
-                $alert(1);
-            }
-        });
-    });
-});
+// $(document).ready(function(){
+//     $('#show_quantity').click(function(){
+//         $.ajax({
+//             url: '',
+//             data: '',
+//             cache: false,
+//             success: function(html){
+//                 $('#show_quantity').html(html);
+//                 return 0;
+//             }
+//         });
+//     });
+// });
 
 
 //

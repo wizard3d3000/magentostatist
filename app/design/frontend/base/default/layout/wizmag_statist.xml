@@ -2,10 +2,9 @@
 
     <wizmagstatist_index_index>
         <!--<reference name="content">-->
-            <block type="wizmagstatist/statist" name="root" template="wizmag_statist/totalamount.phtml" />
+            <block type="wizmagstatist/statist" name="root" template="wizmag_statist/index.phtml" />
         <!--</reference>-->
     </wizmagstatist_index_index>
-
 
     <!--<wizmagstatist_index_view>-->
         <!--<reference name="content">-->
@@ -16,7 +15,7 @@
     <catalog_product_view translate="label">
         <reference name="head">
             <action method="addItem"><type>skin_css</type><name>css/statist/statist.css</name></action>
-            <action method="addJs"><script>js/ajax.js</script></action>
+            <!--<action method="addJs"><script>js/ajax.js</script></action>-->
         </reference>
         <reference name="alert.urls">
             <!--<block type="wizmagstatist/totalamount" name="statist.name" as="info" template="wizmag_statist/totalamount.phtml" output="toHtml" before="-"/>-->

@@ -1,27 +1,3 @@
-<script>
-    function ajaxSold()
-    {
-
-//        $(document).ready(function(){
-//            $('#show_btn').click(function(){
-//                $.ajax({
-//                    url: 'ajax_servlet.php',
-//                    data: 'id='+$('#pos_id').val(),
-//                    cache: false,
-//                    success: function(html){
-//                        $('#content').html(html);
-//                    }
-//                });
-//            });
-//            $('#close_btn').click(function(){
-//                $('#content').html('');
-//            });
-//        });
-
-    }
-</script>
-
-
 <div class="sold-amount">
     <span>
         <?php
@@ -29,75 +5,38 @@
 
             $helper = Mage::helper('wizmagstatist');
             $quantity = $helper->getProductQuantity($productId);
+
             if($quantity!=0) {
-                echo 'Sold: '; ?> <a href='' id="show_quantity"> <?php echo $quantity; ?> </a> <?php echo '<br>';
+            //                echo 'Sold: '; ?><!-- <a href='' id="show_quantity" onclick="ajaxSold()"> --><?php //echo $quantity; ?><!-- </a> --><?php //echo '<br>';
+            echo 'Sold: '; ?> <a href='javascript:;' id="show_quantity" > <?php echo $quantity; ?> </a> <?php echo '<br>';
             } else {
-                echo 'You can be the first who buy this the product!';
+                echo 'You can be the first, who buy this the product!';
             }
         ?>
-        <script src="ajax.js" type="text/javascript"></script>
     </span>
 </div>
 
-
-
-
-
-
-
-
-
 <script>
-//    function ajaxSold()
-//    {
-//        <?php
-//        $productId = $this->getProduct()->getId();
-//        $helper = Mage::helper('wizmagstatist');
-//        $quantity = $helper->getProductQuantity($productId);
-//        echo $quantity;
-//        ?>
-//    }
+    jQuery(document).ready(function(){
+        jQuery('#show_quantity').click(function(){
+            var productId = <?php echo $productId ?>;
+//            var hrefValue = jQuery(this).attr('href');
+            jQuery.ajax({
+                url: '<?php echo $this->getUrl('wizmagstatist/index/getQty') ?>',
+                type: 'POST',
+                dataType: 'json',
+                data: {'id':productId},
+                cache: false,
+                success: function(response){
+//                    jQuery('#ggt').text('urlAmount');
+
+                    //console.log(response);
+                    //var json = response.evalJSON(true);
+                    //console.log(json);
+                    //console.log(response.qty);
+                    jQuery('#show_quantity').text(response.qty);
+                }
+            });
+        });
+    });
 </script>
-
-
-<!--<div class="sold-amount">-->
-<!--    <span>-->
-<!--        --><?php
-//        $productId = $this->getProduct()->getId();
-//
-//        $helper = Mage::helper('wizmagstatist');
-//        $quantity = $helper->getProductQuantity($productId);
-//        if($quantity!=0) {
-//            echo 'Sold: '; ?><!-- <a href='' onclick="return ajaxSold(this);"> --><?php //echo $quantity; ?><!-- </a> --><?php //echo '<br>';
-//        } else {
-//            echo 'You can be the first who buy this the product!';
-//        }
-//        ?>
-<!--    </span>-->
-<!--</div>-->
-
-
-
-
-
-
-<!--<!--it's work version of exstention;-->-->
-<!--<div class="sold-amount">-->
-<!--    <span>-->
-<!--    --><?php
-//    $productId = $this->getProduct()->getId();
-//
-//    $helper = Mage::helper('wizmagstatist');
-//    $quantity = $helper->getProductQuantity($productId);
-//
-//    if($quantity!=0) {
-//        echo 'Sold: ' . $quantity . '<br>';
-//    } else {
-//        echo 'You can be the first who buy this the product!';
-//    }
-//
-//
-//    ?>
-<!---->
-<!--    </span>-->
-<!--</div>-->

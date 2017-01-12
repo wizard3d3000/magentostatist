@@ -22,7 +22,7 @@ class WizMag_Statist_Model_Statist extends Mage_Core_Model_Abstract
         $productId = $this->getData('product_id');
 
         $parentIds = Mage::getModel('catalog/product_type_configurable')->getParentIdsByChild($productId);
-
+    
         if (empty($parentIds)) {
             $cacheKey = "WIZMAG_STAT_" . $productId;
             $cache->remove($cacheKey);
@@ -32,8 +32,8 @@ class WizMag_Statist_Model_Statist extends Mage_Core_Model_Abstract
                 $cache->remove($cacheKey);
             }
         }
-
+        
 //        Mage::log($cacheKey, null, "debug_.log");
-
+        
     }
 }

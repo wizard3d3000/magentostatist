@@ -10,10 +10,22 @@
 class WizMag_Statist_IndexController extends  Mage_Core_Controller_Front_Action{
 
 
-    public function indexAction()
+    public function getQtyAction()
     {
-        $this->loadLayout();
-        $this->renderLayout();
+
+        $productId = (int)$this->getRequest()->getParam('id');
+        //$statist = Mage::getModel('wizmagstatist/statist')->load($productId, 'product_id');
+
+        $helper = Mage::helper('wizmagstatist');
+        $quantity = $helper->getProductQuantity($productId);
+
+        //Mage::log($quantity, null, "debug_.log");
+
+        //$result = array('qty'=>$statist->getQ);
+        $result = array('qty'=>$quantity);
+
+        $this->getResponse()->setHeader('Content-type', 'application/json');
+        $this->getResponse()->setBody(json_encode($result));
     }
 
     
